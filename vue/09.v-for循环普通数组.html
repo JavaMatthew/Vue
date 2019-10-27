@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+
+    <div class="fd-app">
+        <!-- 循环普通数组 -->
+        <p v-for="(item,index) in list">索引值：{{index}} ===> 值：{{item}}</p>
+        <p v-for="(item,index) in list.length">这是第{{item}}此循环</p>
+        <!-- 循环对象数组 -->
+        <p v-for="(user,index) in list1">Id:{{user.id}} ===> 姓名:{{user.name}}</p>
+        <!-- 循环对象 -->
+        <p v-for="(val,key,i) in list2">{{key}} == {{val}} == 索引值：{{i}}</p>
+        <!-- 迭代数字
+             注意：迭代数字从1开始-->
+        <p v-for="(item,index) in 10">这是第{{item}}此循环</p>
+        <p v-for="(item,index) in 'xxixixix'.length">这是第{{item}}此循环</p>
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:".fd-app",
+            data:{
+                list:[1,2,3,4,5],
+                list1:[
+                    {id:1, name:'zhangsan1'},
+                    {id:2, name:'zhangsan2'},
+                    {id:3, name:'zhangsan3'},
+                    {id:4, name:'zhangsan4'}
+                ],
+                list2:{
+                    id:66,
+                    name:"托尼。傻大福",
+                    gender:"男"
+                }
+            },
+            methods:{}
+        })
+    </script>
+
+</body>
+
+</html>

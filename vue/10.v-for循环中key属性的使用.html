@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+
+    <div class="fd-app">
+        ID:<input type="text" v-model="id">
+        Name:<input type="text" v-model="name">
+        <button @click="addHead">队头添加</button>
+        <button @click="add">队尾添加</button>
+        <!-- 注意：v-for循环的时候，key属性只能使用number获取string -->
+        <!-- 注意：key在使用的时候，必须使用v-bind属性绑定，指定key的值 -->
+        <!-- 在组件中，使用v-for循环的时候，或者在一些特殊情况中，如果v-for有问题，必须在使用
+        v-for的同时，指定唯一的字符串/数字类型 -->
+        <ul v-for="(man,index) in list" :key="man.id">
+            <li ><input type="checkbox" > Id:{{man.id}}  姓名:{{man.name}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:".fd-app",
+            data:{
+                id: '',
+                name: '',
+                list:[
+                    {id:1, name:'关羽'},
+                    {id:2, name:'刘备'},
+                    {id:3, name:'张飞'},
+                    {id:4, name:'曹操'},
+                    {id:5, name:'吕布'}
+                ]
+            },
+            methods:{
+                add(){
+                    this.list.push({id:this.id,name:this.name})
+                },
+                addHead(){
+                    this.list.unshift({id:this.id,name:this.name})
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
